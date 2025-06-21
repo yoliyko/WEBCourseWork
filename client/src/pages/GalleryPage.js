@@ -8,7 +8,7 @@ const GalleryPage = () => {
 
   useEffect(() => {
     const fetchImages = async () => {
-      const { data } = await axios.get(`${API_URL}/api/news`);
+      const { data } = await axios.get(`${API_URL}/api/galleryimages`);
       setImages(data);
     };
     fetchImages();
