@@ -3,12 +3,13 @@ import axios from 'axios';
 import Slider from '../components/Slider';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 
+const API_URL = process.env.REACT_APP_API_URL; 
 const HomePage = () => {
   const [latestNews, setLatestNews] = useState([]);
 
   useEffect(() => {
     const fetchLatestNews = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/news/latest');
+      const { data } = await axios.get(`${API_URL}/api/data`);
       setLatestNews(data);
     };
     fetchLatestNews();

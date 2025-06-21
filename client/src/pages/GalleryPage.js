@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container } from 'react-bootstrap';
 
+const API_URL = process.env.REACT_APP_API_URL; 
 const GalleryPage = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
-      const { data } = await axios.get('http://localhost:5000/api/gallery');
+      const { data } = await axios.get(`${API_URL}/api/data`);
       setImages(data);
     };
     fetchImages();

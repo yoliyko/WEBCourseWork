@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
 import NewsCard from '../components/NewsCard'; // Переконайтесь, що у вас є цей компонент
 
+const API_URL = process.env.REACT_APP_API_URL; 
 const NewsPage = () => {
   // Стан для зберігання списку новин
   const [news, setNews] = useState([]);
@@ -18,7 +19,7 @@ const NewsPage = () => {
     const fetchNews = async () => {
       try {
         // Робимо запит до нашого API
-        const { data } = await axios.get('http://localhost:5000/api/news');
+        const { data } = await axios.get(`${API_URL}/api/data`);
         setNews(data); // Зберігаємо отримані дані у стан
       } catch (err) {
         // Якщо сталася помилка, зберігаємо її текст
