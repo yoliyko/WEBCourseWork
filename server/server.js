@@ -18,28 +18,37 @@ const allowedOrigins = [
 ];
 
 // 2. Створюємо об'єкт налаштувань для CORS.
-const corsOptions = {
-  // Функція origin перевіряє, чи є домен, з якого прийшов запит, у нашому списку.
-  origin: function (origin, callback) {
+const VERCEL_PROJECT_DOMAIN = 'yoliykos-projects.vercel.app';
 
-    console.log('REQUEST ORIGIN:', origin); 
-    // Якщо домен є у списку (або запит йде не з браузера, `origin` буде undefined),
-    // тоді ми дозволяємо запит.
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      // Якщо домену немає у списку, ми відхиляємо запит.
-      callback(new Error('This origin is not allowed by CORS policy'));
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Дозволяємо запити без origin (Postman, health checks)
+    if (!origin) {
+      return callback(null, true);
     }
+
+    // Дозволяємо локальну розробку
+    if (origin === 'http://localhost:3000') {
+      return callback(null, true);
+    }
+
+    try {
+      const hostname = new URL(origin).hostname;
+      if (hostname.endsWith(VERCEL_PROJECT_DOMAIN)) {
+        return callback(null, true);
+      }
+    } catch (e) {
+      // Ігноруємо помилки парсингу URL
+    }
+
+    // Якщо жодна з умов не виконалась, блокуємо запит.
+    return callback(new Error('This origin is not allowed by CORS policy'));
   },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Які HTTP-методи дозволено
-  credentials: true, // Дозволити передачу cookies, якщо знадобиться
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
 };
 
-// 3. Застосовуємо middleware з нашими детальними налаштуваннями.
 app.use(cors(corsOptions));
-
-// === КІНЕЦЬ ЗМІН ===
 
 
 app.use(express.json()); // Дозволяє серверу читати JSON з тіла запиту
