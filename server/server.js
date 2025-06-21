@@ -20,6 +20,8 @@ const allowedOrigins = [
 const corsOptions = {
   // Функція origin перевіряє, чи є домен, з якого прийшов запит, у нашому списку.
   origin: function (origin, callback) {
+
+    console.log('REQUEST ORIGIN:', origin); 
     // Якщо домен є у списку (або запит йде не з браузера, `origin` буде undefined),
     // тоді ми дозволяємо запит.
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
