@@ -9,7 +9,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchLatestNews = async () => {
-      const { data } = await axios.get(`${API_URL}/api/data`);
+      const { data } = await axios.get(`${API_URL}/api/news`);
       setLatestNews(data);
     };
     fetchLatestNews();
