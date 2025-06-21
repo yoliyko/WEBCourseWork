@@ -3,13 +3,20 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap';
 
 const API_URL = process.env.REACT_APP_API_URL; 
+
 const GalleryPage = () => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     const fetchImages = async () => {
-      const { data } = await axios.get(`${API_URL}/api/galleryimages`);
-      setImages(data);
+      try { // Завжди добре огортати запити в try...catch
+        // !!! ОСЬ ЗМІНА !!!
+        const { data } = await axios.get(`${API_URL}/api/gallery`);
+        setImages(data);
+      } catch (error) {
+        console.error("Помилка при завантаженні зображень галереї:", error);
+        // Тут можна також встановити стан помилки, щоб показати її користувачу
+      }
     };
     fetchImages();
   }, []);
