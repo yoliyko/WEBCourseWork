@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider>
-      {/* ОСЬ НАШ ЄДИНИЙ ГОЛОВНИЙ РОУТЕР */}
+      {}
       <BrowserRouter>
         <App />
       </BrowserRouter>

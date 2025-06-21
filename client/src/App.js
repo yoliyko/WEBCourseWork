@@ -1,7 +1,6 @@
 // client/src/App.js
 
 import React from 'react';
-// Зверніть увагу: ми НЕ імпортуємо BrowserRouter as Router тут
 import { Route, Routes } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -15,7 +14,6 @@ import ContactsPage from './pages/ContactsPage';
 import './App.css';
 
 function App() {
-  // ТУТ НЕМАЄ ОБГОРТКИ <Router>!
   return (
     <div className="d-flex flex-column min-vh-100">
       <Header />
