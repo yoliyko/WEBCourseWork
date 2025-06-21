@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 5000;
 
 // 1. Створюємо список доменів, яким ми довіряємо.
 const allowedOrigins = [
-  'http://localhost:3000', // Для локальної розробки вашого frontend
-  'https://web-course-work-13htgui6z-yoliykos-projects.vercel.app' // ВАШ КОНКРЕТНИЙ ДОМЕН НА VERCEL
+  'http://localhost:3000',
+  'https://web-course-work-13htgui6z-yoliykos-projects.vercel.app', // Це старий, можете його залишити або видалити
+  'https://web-course-work-1smspbtdy-yoliykos-projects.vercel.app'  // <-- ОСЬ ВАШ ПРАВИЛЬНИЙ ДОМЕН!
 ];
 
 // 2. Створюємо об'єкт налаштувань для CORS.
