@@ -1,0 +1,95 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Приклад: Зменшуємо заголовок на мобільних пристроях */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .navbar-brand {
+    font-size: 1rem;
+  }
+}
+
+/* Приклад: Змінюємо кількість колонок в галереї на дуже маленьких екранах */
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr; /* Одна колонка */
+  }
+}
+
+.caption-background {
+  background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний колір. Виглядає краще, ніж сірий. */
+  padding: 1rem 2rem;                   /* Внутрішні відступи (зверху/знизу та зліва/справа) */
+  border-radius: 8px;                   /* Легке заокруглення кутів */
+  display: inline-block;                /* Щоб блок займав ширину по тексту, а не всю ширину слайдера */
+}
+
+/* Додаємо плавну анімацію для зміни теми */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Налаштовуємо нашу кастомну підкладку для темної теми */
+[data-bs-theme="dark"] .caption-background {
+  background-color: rgba(0, 0, 0, 0.7); /* Робимо її трохи темнішою для кращого контрасту */
+}
+
+/* Виправляємо колір тексту посилань в хедері для темної теми */
+[data-bs-theme="dark"] .navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+[data-bs-theme="dark"] .navbar-dark .navbar-nav .nav-link:hover {
+  color: #fff;
+}
