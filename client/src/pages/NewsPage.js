@@ -19,7 +19,7 @@ const NewsPage = () => {
     const fetchNews = async () => {
       try {
         // Робимо запит до нашого API
-        const { data } = await axios.get(`${API_URL}/api/data`);
+        const { data } = await axios.get(`${API_URL}/api/news`);
         setNews(data); // Зберігаємо отримані дані у стан
       } catch (err) {
         // Якщо сталася помилка, зберігаємо її текст
